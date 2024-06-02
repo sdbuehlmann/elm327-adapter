@@ -2,68 +2,66 @@ package ch.donkeycode;
 
 import jssc.SerialPort;
 import jssc.SerialPortException;
+import lombok.extern.slf4j.Slf4j;
+import lombok.val;
 
+import java.time.Duration;
+import java.time.LocalDateTime;
 import java.util.Optional;
 
+@Slf4j
 public class Connection {
 
-    public static void main(String[] args) {
-        // Seriellen Port auswählen (angepasst für dein System)
-        String portName = "COM3"; // Passe dies an den tatsächlichen Port an
-        SerialPort serialPort = new SerialPort(portName);
+    private final SerialPort serialPort;
 
-        try {
-            // Port öffnen und konfigurieren
-            serialPort.openPort();
-            serialPort.setParams(SerialPort.BAUDRATE_38400,
-                    SerialPort.DATABITS_8,
-                    SerialPort.STOPBITS_1,
-                    SerialPort.PARITY_NONE);
+    public Connection(String portName) throws SerialPortException {
+        log.info("Start serial connection for port {}...", portName);
+        serialPort = new SerialPort(portName);
 
-            // Initialisierung des ELM327
-            sendCommand(serialPort, "AT Z\r");  // Reset
-            System.out.println("Antwort: " + readResponse(serialPort));
+        serialPort.openPort();
+        serialPort.setParams(SerialPort.BAUDRATE_38400,
+                SerialPort.DATABITS_8,
+                SerialPort.STOPBITS_1,
+                SerialPort.PARITY_NONE);
+    }
 
-            sendCommand(serialPort, "AT SP 0\r");  // Auto-Protokoll
-            System.out.println("Antwort: " + readResponse(serialPort));
+    public Optional<String> sendAndReceive(String command, Duration maxTimeout) throws SerialPortException {
+        send(command);
+        return readResponseBlocking(maxTimeout);
+    }
 
-            // Tankfüllung abfragen (PID 2F)
-            sendCommand(serialPort, "012F\r");
-            String response = readResponse(serialPort);
-            System.out.println("Tankfüllung Antwort: " + response);
+    public void send(String command) throws SerialPortException {
+        log.debug("Send command: {}", StringHelper.makeControlCharsVisible(command));
+        serialPort.writeString(command);
+    }
 
-            // Antwort parsen (Beispiel für PID 2F: Tankfüllung)
-            if (response.startsWith("41 2F")) {
-                String hexLevel = response.substring(6, 8);
-                int level = Integer.parseInt(hexLevel, 16);
-                double fuelLevel = (level * 100.0) / 255.0;
-                System.out.println("Tankfüllung: " + fuelLevel + "%");
+    public Optional<String> readResponseBlocking(Duration maxTimeout) throws SerialPortException {
+        val startedAt = LocalDateTime.now();
+        val maxBlockUntil = startedAt.plus(maxTimeout);
+
+        val response = new StringBuilder();
+
+        while (true) {
+            byte[] buffer = serialPort.readBytes(1);
+            if (buffer != null && buffer.length > 0) {
+                char c = (char) buffer[0];
+                response.append(c);
+                if (response.toString().endsWith(">")) {
+                    break;
+                }
             }
 
-            // Port schließen
-            serialPort.closePort();
-            System.out.println("Port geschlossen");
-        } catch (SerialPortException e) {
-            e.printStackTrace();
-        }
-    }
-
-    // Hilfsmethode zum Senden von Befehlen
-    private static void sendCommand(SerialPort serialPort, String command) throws SerialPortException {
-        serialPort.writeString(command);
-        System.out.println("Befehl gesendet: " + command);
-    }
-
-    // Hilfsmethode zum Lesen der Antwort
-    private static String readResponse(SerialPort serialPort) throws SerialPortException {
-        try {
-            Thread.sleep(2000); // Warte etwas, um sicherzustellen, dass die Antwort vollständig ist
-        } catch (InterruptedException e) {
-            e.printStackTrace();
+            if (LocalDateTime.now().isAfter(maxBlockUntil)) {
+                log.info("No complete response received in time. Dropped received data: {}", StringHelper.makeControlCharsVisible(response.toString()));
+                return Optional.empty();
+            }
         }
 
-        return Optional.ofNullable(serialPort.readString())
-                .map(String::trim)
-                .orElse("n/a");
+        return Optional.of(response.toString());
+    }
+
+    public void close() throws SerialPortException {
+        log.info("Close serial connection...");
+        serialPort.closePort();
     }
 }
