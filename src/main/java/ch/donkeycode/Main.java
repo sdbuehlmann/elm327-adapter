@@ -1,9 +1,9 @@
 package ch.donkeycode;
 
 import ch.donkeycode.common.StringHelper;
-import ch.donkeycode.obd2.pids.DefaultPIDs;
 import ch.donkeycode.obd2.OBD2Reader;
 import ch.donkeycode.obd2.elm327.Connection;
+import ch.donkeycode.obd2.pids.DefaultPIDs;
 import jssc.SerialPortException;
 import lombok.extern.slf4j.Slf4j;
 import lombok.val;
@@ -34,55 +34,16 @@ public class Main {
         connection.sendAndReceive("ATL0\n", Duration.ofSeconds(5)) //  Zeilenumbrüche ausschalten
                 .ifPresent(s -> log.info("Response: {}", StringHelper.makeControlCharsVisible(s)));
 
-        val response = reader.read(DefaultPIDs.PIDS_SUPPORTED);
-        log.info("Supported PIDs: {}", response);
+        log.info("Supported PIDs: {}", reader.tryRead(DefaultPIDs.PIDS_SUPPORTED_OX01_TO_0X20));
+        log.info("Supported PIDs: {}", reader.tryRead(DefaultPIDs.PIDS_SUPPORTED_OX21_TO_0X40));
+        log.info("Supported PIDs: {}", reader.tryRead(DefaultPIDs.PIDS_SUPPORTED_OX41_TO_0X60));
+        log.info("Supported PIDs: {}", reader.tryRead(DefaultPIDs.PIDS_SUPPORTED_OX61_TO_0X80));
+        log.info("Supported PIDs: {}", reader.tryRead(DefaultPIDs.PIDS_SUPPORTED_OX81_TO_0XA0));
+        log.info("Supported PIDs: {}", reader.tryRead(DefaultPIDs.PIDS_SUPPORTED_OXA1_TO_0XC0));
+        log.info("Supported PIDs: {}", reader.tryRead(DefaultPIDs.PIDS_SUPPORTED_OXC1_TO_0XE0));
 
-
-//        connection.sendAndReceive("AT Z\r", Duration.ofSeconds(5)) // Reset
-//                .ifPresent(s -> log.info("Response: {}", StringHelper.makeControlCharsVisible(s)));
-//
-//        connection.sendAndReceive("AT SP 0\n", Duration.ofSeconds(5)) // Auto-Protokoll
-//                .ifPresent(s -> log.info("Response: {}", StringHelper.makeControlCharsVisible(s)));
-//
-//
-//        connection.sendAndReceive("03\r", Duration.ofSeconds(30)) // Error codes
-//                .ifPresent(s -> log.info("Response: {}", StringHelper.makeControlCharsVisible(s)));
-//
-//        connection.sendAndReceive("0100\r", Duration.ofSeconds(30)) // PIDs supported
-//                .ifPresent(s -> log.info("Response: {}", StringHelper.makeControlCharsVisible(s)));
-//        connection.sendAndReceive("0120\r", Duration.ofSeconds(30)) // PIDs supported
-//                .ifPresent(s -> log.info("Response: {}", StringHelper.makeControlCharsVisible(s)));
-//        connection.sendAndReceive("0140\r", Duration.ofSeconds(30)) // PIDs supported
-//                .ifPresent(s -> log.info("Response: {}", StringHelper.makeControlCharsVisible(s)));
-//        connection.sendAndReceive("0160\r", Duration.ofSeconds(30)) // PIDs supported
-//                .ifPresent(s -> log.info("Response: {}", StringHelper.makeControlCharsVisible(s)));
-//        connection.sendAndReceive("0180\r", Duration.ofSeconds(30)) // PIDs supported
-//                .ifPresent(s -> log.info("Response: {}", StringHelper.makeControlCharsVisible(s)));
-//        connection.sendAndReceive("01A0\r", Duration.ofSeconds(30)) // PIDs supported
-//                .ifPresent(s -> log.info("Response: {}", StringHelper.makeControlCharsVisible(s)));
-//        connection.sendAndReceive("01C0\r", Duration.ofSeconds(30)) // PIDs supported
-//                .ifPresent(s -> log.info("Response: {}", StringHelper.makeControlCharsVisible(s)));
-//
-//
-//        connection.sendAndReceive("AT RV\r", Duration.ofSeconds(5)) // Batteriespannung auslesen
-//                .ifPresent(s -> log.info("Response: {}", StringHelper.makeControlCharsVisible(s)));
-//
-//        connection.sendAndReceive("012F\r", Duration.ofSeconds(30)) // Tankfüllung abfragen (PID 2F)
-//                .ifPresent(s -> log.info("Response: {}", StringHelper.makeControlCharsVisible(s)));
-//
-//
-//
-//        connection.sendAndReceive("0146\r", Duration.ofSeconds(30)) // Ambient air temperature NOT WORKING
-//                .ifPresent(s -> log.info("Response: {}", StringHelper.makeControlCharsVisible(s)));
-//
-//        connection.sendAndReceive("1A80\r", Duration.ofSeconds(30)) // Fiat specific NOT WORKING
-//                .ifPresent(s -> log.info("Response: {}", StringHelper.makeControlCharsVisible(s)));
-//
-//
-//        connection.sendAndReceive("AT Z\r", Duration.ofSeconds(5)) // Reset
-//                .ifPresent(s -> log.info("Response: {}", StringHelper.makeControlCharsVisible(s)));
-
-
+        connection.sendAndReceive("AT Z\r", Duration.ofSeconds(5)) // Reset
+                .ifPresent(s -> log.info("Response: {}", StringHelper.makeControlCharsVisible(s)));
         connection.close();
     }
 }

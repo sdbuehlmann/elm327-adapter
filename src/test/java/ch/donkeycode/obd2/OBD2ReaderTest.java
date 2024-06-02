@@ -51,7 +51,7 @@ class OBD2ReaderTest {
                 .thenReturn(Optional.of("SEARCHING...\r41 00 98 3B 00 11 \r\r>"));
 
         // when
-        val response = obd2Reader.read(DefaultPIDs.PIDS_SUPPORTED);
+        val response = obd2Reader.read(DefaultPIDs.PIDS_SUPPORTED_OX01_TO_0X20);
 
         // then
         Assertions

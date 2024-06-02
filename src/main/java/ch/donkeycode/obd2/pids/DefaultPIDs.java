@@ -263,7 +263,523 @@ public class DefaultPIDs {
             .decoder(bytes -> null) // TODO
             .build();
 
-    public static final ParameterID<SupportedPIDsReport> PIDS_SUPPORTED = ParameterID.<SupportedPIDsReport>builder()
+    // PIDs 0x21 to 0x40 ============================================================================================
+
+    public static final ParameterID<Void> MIL_ON_SINCE = ParameterID.<Void>builder()
+            .mode(1)
+            .id(0x21)
+            .returnedBytes(2)
+            .description("Distance traveled with malfunction indicator lamp (MIL) on")
+            .decoder(bytes -> null) // TODO
+            .build();
+
+    public static final ParameterID<Void> FUEL_RAIL_PRESSURE = ParameterID.<Void>builder()
+            .mode(1)
+            .id(0x22)
+            .returnedBytes(2)
+            .description("Fuel Rail Pressure (relative to manifold vacuum)")
+            .decoder(bytes -> null) // TODO
+            .build();
+
+
+    public static final ParameterID<Void> FUEL_RAIL_GAUGE_PRESSURE = ParameterID.<Void>builder()
+            .mode(1)
+            .id(0x23)
+            .returnedBytes(2)
+            .description("Fuel Rail Gauge Pressure (diesel, or gasoline direct injection)")
+            .decoder(bytes -> null) // TODO
+            .build();
+
+    public static final ParameterID<Void> OXYGEN_SENSOR_1_VOLTAGE = ParameterID.<Void>builder()
+            .mode(1)
+            .id(0x24)
+            .returnedBytes(4)
+            .description("Oxygen Sensor 1")
+            .decoder(bytes -> null) // TODO
+            .build();
+
+    public static final ParameterID<Void> OXYGEN_SENSOR_2_VOLTAGE = ParameterID.<Void>builder()
+            .mode(1)
+            .id(0x25)
+            .returnedBytes(4)
+            .description("Oxygen Sensor 2")
+            .decoder(bytes -> null) // TODO
+            .build();
+
+    public static final ParameterID<Void> OXYGEN_SENSOR_3_VOLTAGE = ParameterID.<Void>builder()
+            .mode(1)
+            .id(0x26)
+            .returnedBytes(4)
+            .description("Oxygen Sensor 3")
+            .decoder(bytes -> null) // TODO
+            .build();
+
+    public static final ParameterID<Void> OXYGEN_SENSOR_4_VOLTAGE = ParameterID.<Void>builder()
+            .mode(1)
+            .id(0x27)
+            .returnedBytes(4)
+            .description("Oxygen Sensor 4")
+            .decoder(bytes -> null) // TODO
+            .build();
+
+    public static final ParameterID<Void> OXYGEN_SENSOR_5_VOLTAGE = ParameterID.<Void>builder()
+            .mode(1)
+            .id(0x28)
+            .returnedBytes(4)
+            .description("Oxygen Sensor 5")
+            .decoder(bytes -> null) // TODO
+            .build();
+
+    public static final ParameterID<Void> OXYGEN_SENSOR_6_VOLTAGE = ParameterID.<Void>builder()
+            .mode(1)
+            .id(0x29)
+            .returnedBytes(4)
+            .description("Oxygen Sensor 6")
+            .decoder(bytes -> null) // TODO
+            .build();
+
+    public static final ParameterID<Void> OXYGEN_SENSOR_7_VOLTAGE = ParameterID.<Void>builder()
+            .mode(1)
+            .id(0x2a)
+            .returnedBytes(4)
+            .description("Oxygen Sensor 7")
+            .decoder(bytes -> null) // TODO
+            .build();
+
+    public static final ParameterID<Void> OXYGEN_SENSOR_8_VOLTAGE = ParameterID.<Void>builder()
+            .mode(1)
+            .id(0x2B)
+            .returnedBytes(4)
+            .description("Oxygen Sensor 8")
+            .decoder(bytes -> null) // TODO
+            .build();
+
+    public static final ParameterID<Void> COMMANDED_EGR = ParameterID.<Void>builder()
+            .mode(1)
+            .id(0x2C)
+            .returnedBytes(1)
+            .description("Commanded EGR")
+            .decoder(bytes -> null) // TODO
+            .build();
+
+    public static final ParameterID<Void> EGR_ERROR = ParameterID.<Void>builder()
+            .mode(1)
+            .id(0x2D)
+            .returnedBytes(1)
+            .description("EGR Error")
+            .decoder(bytes -> null) // TODO
+            .build();
+
+    public static final ParameterID<Void> COMMANDED_EVAPORATIVE_PURGE = ParameterID.<Void>builder()
+            .mode(1)
+            .id(0x2E)
+            .returnedBytes(1)
+            .description("Commanded evaporative purge")
+            .decoder(bytes -> null) // TODO
+            .build();
+
+
+    public static final ParameterID<Void> FUEL_TANK_LEVEL_INPUT = ParameterID.<Void>builder()
+            .mode(1)
+            .id(0x2F)
+            .returnedBytes(1)
+            .description("Fuel Tank Level Input")
+            .decoder(bytes -> null) // TODO
+            .build();
+
+    public static final ParameterID<Void> WARM_UPS_SINCE_CODES_CLEARED = ParameterID.<Void>builder()
+            .mode(1)
+            .id(0x30)
+            .returnedBytes(1)
+            .description("Warm-ups since codes cleared")
+            .decoder(bytes -> null) // TODO
+            .build();
+
+    public static final ParameterID<Void> DISTANCE_TRAVELED_SINCE_CODES_CLEARED = ParameterID.<Void>builder()
+            .mode(1)
+            .id(0x31)
+            .returnedBytes(2)
+            .description("Distance traveled since codes cleared")
+            .decoder(bytes -> null) // TODO
+            .build();
+
+    public static final ParameterID<Void> EVAP_SYSTEM_VAPOR_PRESSURE = ParameterID.<Void>builder()
+            .mode(1)
+            .id(0x32)
+            .returnedBytes(2)
+            .description("Evap. System Vapor Pressure")
+            .decoder(bytes -> null) // TODO
+            .build();
+
+    public static final ParameterID<Void> ABSOLUTE_BAROMETRIC_PRESSURE = ParameterID.<Void>builder()
+            .mode(1)
+            .id(0x33)
+            .returnedBytes(2)
+            .description("Absolute Barometric Pressure")
+            .decoder(bytes -> null) // TODO
+            .build();
+
+    public static final ParameterID<Void> OXYGEN_SENSOR_1_CURRENT = ParameterID.<Void>builder()
+            .mode(1)
+            .id(0x34)
+            .returnedBytes(4)
+            .description("Oxygen Sensor 1")
+            .decoder(bytes -> null) // TODO
+            .build();
+
+    public static final ParameterID<Void> OXYGEN_SENSOR_2_CURRENT = ParameterID.<Void>builder()
+            .mode(1)
+            .id(0x35)
+            .returnedBytes(4)
+            .description("Oxygen Sensor 2")
+            .decoder(bytes -> null) // TODO
+            .build();
+
+    public static final ParameterID<Void> OXYGEN_SENSOR_3_CURRENT = ParameterID.<Void>builder()
+            .mode(1)
+            .id(0x36)
+            .returnedBytes(4)
+            .description("Oxygen Sensor 3")
+            .decoder(bytes -> null) // TODO
+            .build();
+
+    public static final ParameterID<Void> OXYGEN_SENSOR_4_CURRENT = ParameterID.<Void>builder()
+            .mode(1)
+            .id(0x37)
+            .returnedBytes(4)
+            .description("Oxygen Sensor 4")
+            .decoder(bytes -> null) // TODO
+            .build();
+
+    public static final ParameterID<Void> OXYGEN_SENSOR_5_CURRENT = ParameterID.<Void>builder()
+            .mode(1)
+            .id(0x38)
+            .returnedBytes(4)
+            .description("Oxygen Sensor 5")
+            .decoder(bytes -> null) // TODO
+            .build();
+
+    public static final ParameterID<Void> OXYGEN_SENSOR_6_CURRENT = ParameterID.<Void>builder()
+            .mode(1)
+            .id(0x39)
+            .returnedBytes(4)
+            .description("Oxygen Sensor 6")
+            .decoder(bytes -> null) // TODO
+            .build();
+
+    public static final ParameterID<Void> OXYGEN_SENSOR_7_CURRENT = ParameterID.<Void>builder()
+            .mode(1)
+            .id(0x3A)
+            .returnedBytes(4)
+            .description("Oxygen Sensor 7")
+            .decoder(bytes -> null) // TODO
+            .build();
+
+    public static final ParameterID<Void> OXYGEN_SENSOR_8_CURRENT = ParameterID.<Void>builder()
+            .mode(1)
+            .id(0x3B)
+            .returnedBytes(4)
+            .description("Oxygen Sensor 8")
+            .decoder(bytes -> null) // TODO
+            .build();
+
+    public static final ParameterID<Void> CAT_TEMPERATURE_BANK_1_SENSOR_1 = ParameterID.<Void>builder()
+            .mode(1)
+            .id(0x3c)
+            .returnedBytes(2)
+            .description("Catalyst Temperature: Bank 1, Sensor 1")
+            .decoder(bytes -> null) // TODO
+            .build();
+
+    public static final ParameterID<Void> CAT_TEMPERATURE_BANK_2_SENSOR_1 = ParameterID.<Void>builder()
+            .mode(1)
+            .id(0x3D)
+            .returnedBytes(2)
+            .description("Catalyst Temperature: Bank 2, Sensor 1")
+            .decoder(bytes -> null) // TODO
+            .build();
+
+    public static final ParameterID<Void> CAT_TEMPERATURE_BANK_1_SENSOR_2 = ParameterID.<Void>builder()
+            .mode(1)
+            .id(0x3E)
+            .returnedBytes(2)
+            .description("Catalyst Temperature: Bank 1, Sensor 2")
+            .decoder(bytes -> null) // TODO
+            .build();
+
+    public static final ParameterID<Void> CAT_TEMPERATURE_BANK_2_SENSOR_2 = ParameterID.<Void>builder()
+            .mode(1)
+            .id(0x3F)
+            .returnedBytes(2)
+            .description("Catalyst Temperature: Bank 2, Sensor 1")
+            .decoder(bytes -> null) // TODO
+            .build();
+
+
+    public static final ParameterID<SupportedPIDsReport> PIDS_SUPPORTED_OXC1_TO_0XE0 = ParameterID.<SupportedPIDsReport>builder()
+            .mode(1)
+            .id(0xC0)
+            .returnedBytes(4)
+            .description("PIDs supported [$C1 - $E0]")
+            .decoder(SupportedPIDsReport.deserializer(
+                    PLACEHOLDER,
+                    PLACEHOLDER,
+                    PLACEHOLDER,
+                    PLACEHOLDER,
+                    PLACEHOLDER,
+                    PLACEHOLDER,
+                    PLACEHOLDER,
+                    PLACEHOLDER,
+
+                    PLACEHOLDER,
+                    PLACEHOLDER,
+                    PLACEHOLDER,
+                    PLACEHOLDER,
+                    PLACEHOLDER,
+                    PLACEHOLDER,
+                    PLACEHOLDER,
+                    PLACEHOLDER,
+
+                    PLACEHOLDER,
+                    PLACEHOLDER,
+                    PLACEHOLDER,
+                    PLACEHOLDER,
+                    PLACEHOLDER,
+                    PLACEHOLDER,
+                    PLACEHOLDER,
+                    PLACEHOLDER,
+
+                    PLACEHOLDER,
+                    PLACEHOLDER,
+                    PLACEHOLDER,
+                    PLACEHOLDER,
+                    PLACEHOLDER,
+                    PLACEHOLDER,
+                    PLACEHOLDER,
+                    PLACEHOLDER
+            ))
+            .build();
+
+    public static final ParameterID<SupportedPIDsReport> PIDS_SUPPORTED_OXA1_TO_0XC0 = ParameterID.<SupportedPIDsReport>builder()
+            .mode(1)
+            .id(0xA0)
+            .returnedBytes(4)
+            .description("PIDs supported [$A1 - $C0]")
+            .decoder(SupportedPIDsReport.deserializer(
+                    PLACEHOLDER,
+                    PLACEHOLDER,
+                    PLACEHOLDER,
+                    PLACEHOLDER,
+                    PLACEHOLDER,
+                    PLACEHOLDER,
+                    PLACEHOLDER,
+                    PLACEHOLDER,
+
+                    PLACEHOLDER,
+                    PLACEHOLDER,
+                    PLACEHOLDER,
+                    PLACEHOLDER,
+                    PLACEHOLDER,
+                    PLACEHOLDER,
+                    PLACEHOLDER,
+                    PLACEHOLDER,
+
+                    PLACEHOLDER,
+                    PLACEHOLDER,
+                    PLACEHOLDER,
+                    PLACEHOLDER,
+                    PLACEHOLDER,
+                    PLACEHOLDER,
+                    PLACEHOLDER,
+                    PLACEHOLDER,
+
+                    PLACEHOLDER,
+                    PLACEHOLDER,
+                    PLACEHOLDER,
+                    PLACEHOLDER,
+                    PLACEHOLDER,
+                    PLACEHOLDER,
+                    PLACEHOLDER,
+                    PLACEHOLDER
+            ))
+            .build();
+
+    public static final ParameterID<SupportedPIDsReport> PIDS_SUPPORTED_OX81_TO_0XA0 = ParameterID.<SupportedPIDsReport>builder()
+            .mode(1)
+            .id(0x80)
+            .returnedBytes(4)
+            .description("PIDs supported [$81 - $A0]")
+            .decoder(SupportedPIDsReport.deserializer(
+                    PLACEHOLDER,
+                    PLACEHOLDER,
+                    PLACEHOLDER,
+                    PLACEHOLDER,
+                    PLACEHOLDER,
+                    PLACEHOLDER,
+                    PLACEHOLDER,
+                    PLACEHOLDER,
+
+                    PLACEHOLDER,
+                    PLACEHOLDER,
+                    PLACEHOLDER,
+                    PLACEHOLDER,
+                    PLACEHOLDER,
+                    PLACEHOLDER,
+                    PLACEHOLDER,
+                    PLACEHOLDER,
+
+                    PLACEHOLDER,
+                    PLACEHOLDER,
+                    PLACEHOLDER,
+                    PLACEHOLDER,
+                    PLACEHOLDER,
+                    PLACEHOLDER,
+                    PLACEHOLDER,
+                    PLACEHOLDER,
+
+                    PLACEHOLDER,
+                    PLACEHOLDER,
+                    PLACEHOLDER,
+                    PLACEHOLDER,
+                    PLACEHOLDER,
+                    PLACEHOLDER,
+                    PLACEHOLDER,
+                    PLACEHOLDER
+            ))
+            .build();
+
+
+    public static final ParameterID<SupportedPIDsReport> PIDS_SUPPORTED_OX61_TO_0X80 = ParameterID.<SupportedPIDsReport>builder()
+            .mode(1)
+            .id(0x60)
+            .returnedBytes(4)
+            .description("PIDs supported [$61 - $80]")
+            .decoder(SupportedPIDsReport.deserializer(
+                    PLACEHOLDER,
+                    PLACEHOLDER,
+                    PLACEHOLDER,
+                    PLACEHOLDER,
+                    PLACEHOLDER,
+                    PLACEHOLDER,
+                    PLACEHOLDER,
+                    PLACEHOLDER,
+
+                    PLACEHOLDER,
+                    PLACEHOLDER,
+                    PLACEHOLDER,
+                    PLACEHOLDER,
+                    PLACEHOLDER,
+                    PLACEHOLDER,
+                    PLACEHOLDER,
+                    PLACEHOLDER,
+
+                    PLACEHOLDER,
+                    PLACEHOLDER,
+                    PLACEHOLDER,
+                    PLACEHOLDER,
+                    PLACEHOLDER,
+                    PLACEHOLDER,
+                    PLACEHOLDER,
+                    PLACEHOLDER,
+
+                    PLACEHOLDER,
+                    PLACEHOLDER,
+                    PLACEHOLDER,
+                    PLACEHOLDER,
+                    PLACEHOLDER,
+                    PLACEHOLDER,
+                    PLACEHOLDER,
+                    PLACEHOLDER
+            ))
+            .build();
+
+
+    public static final ParameterID<SupportedPIDsReport> PIDS_SUPPORTED_OX41_TO_0X60 = ParameterID.<SupportedPIDsReport>builder()
+            .mode(1)
+            .id(0x40)
+            .returnedBytes(4)
+            .description("PIDs supported [$41 - $60]")
+            .decoder(SupportedPIDsReport.deserializer(
+                    PLACEHOLDER,
+                    PLACEHOLDER,
+                    PLACEHOLDER,
+                    PLACEHOLDER,
+                    PLACEHOLDER,
+                    PLACEHOLDER,
+                    PLACEHOLDER,
+                    PLACEHOLDER,
+
+                    PLACEHOLDER,
+                    PLACEHOLDER,
+                    PLACEHOLDER,
+                    PLACEHOLDER,
+                    PLACEHOLDER,
+                    PLACEHOLDER,
+                    PLACEHOLDER,
+                    PLACEHOLDER,
+
+                    PLACEHOLDER,
+                    PLACEHOLDER,
+                    PLACEHOLDER,
+                    PLACEHOLDER,
+                    PLACEHOLDER,
+                    PLACEHOLDER,
+                    PLACEHOLDER,
+                    PLACEHOLDER,
+
+                    PLACEHOLDER,
+                    PLACEHOLDER,
+                    PLACEHOLDER,
+                    PLACEHOLDER,
+                    PLACEHOLDER,
+                    PLACEHOLDER,
+                    PLACEHOLDER,
+                    PLACEHOLDER
+            ))
+            .build();
+
+    public static final ParameterID<SupportedPIDsReport> PIDS_SUPPORTED_OX21_TO_0X40 = ParameterID.<SupportedPIDsReport>builder()
+            .mode(1)
+            .id(0x20)
+            .returnedBytes(4)
+            .description("PIDs supported [$21 - $40]")
+            .decoder(SupportedPIDsReport.deserializer(
+                    MIL_ON_SINCE,
+                    FUEL_RAIL_PRESSURE,
+                    FUEL_RAIL_GAUGE_PRESSURE,
+                    OXYGEN_SENSOR_1_VOLTAGE,
+                    OXYGEN_SENSOR_2_VOLTAGE,
+                    OXYGEN_SENSOR_3_VOLTAGE,
+                    OXYGEN_SENSOR_4_VOLTAGE,
+                    OXYGEN_SENSOR_5_VOLTAGE,
+                    OXYGEN_SENSOR_6_VOLTAGE,
+                    OXYGEN_SENSOR_7_VOLTAGE,
+                    OXYGEN_SENSOR_8_VOLTAGE,
+                    COMMANDED_EGR,
+                    EGR_ERROR,
+                    COMMANDED_EVAPORATIVE_PURGE,
+                    FUEL_TANK_LEVEL_INPUT,
+                    WARM_UPS_SINCE_CODES_CLEARED,
+                    DISTANCE_TRAVELED_SINCE_CODES_CLEARED,
+                    EVAP_SYSTEM_VAPOR_PRESSURE,
+                    ABSOLUTE_BAROMETRIC_PRESSURE,
+                    OXYGEN_SENSOR_1_CURRENT,
+                    OXYGEN_SENSOR_2_CURRENT,
+                    OXYGEN_SENSOR_3_CURRENT,
+                    OXYGEN_SENSOR_4_CURRENT,
+                    OXYGEN_SENSOR_5_CURRENT,
+                    OXYGEN_SENSOR_6_CURRENT,
+                    OXYGEN_SENSOR_7_CURRENT,
+                    OXYGEN_SENSOR_8_CURRENT,
+                    CAT_TEMPERATURE_BANK_1_SENSOR_1,
+                    CAT_TEMPERATURE_BANK_2_SENSOR_1,
+                    CAT_TEMPERATURE_BANK_1_SENSOR_2,
+                    CAT_TEMPERATURE_BANK_2_SENSOR_2,
+                    PIDS_SUPPORTED_OX41_TO_0X60
+            ))
+            .build();
+
+    public static final ParameterID<SupportedPIDsReport> PIDS_SUPPORTED_OX01_TO_0X20 = ParameterID.<SupportedPIDsReport>builder()
             .mode(1)
             .id(0x00)
             .returnedBytes(4)
@@ -299,11 +815,8 @@ public class DefaultPIDs {
                     VEHICLE_OBD_STANDARDS,
                     OXYGEN_SENSORS_PRESENT_4_BANKS,
                     AUXILIARY_INPUT_STATUS,
-                    RUN_TIME_SINCE_ENGINE_START
+                    RUN_TIME_SINCE_ENGINE_START,
+                    PIDS_SUPPORTED_OX41_TO_0X60
             ))
             .build();
-
-
-
-
 }
