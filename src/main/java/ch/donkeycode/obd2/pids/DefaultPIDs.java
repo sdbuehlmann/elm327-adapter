@@ -515,6 +515,256 @@ public class DefaultPIDs {
             .decoder(bytes -> null) // TODO
             .build();
 
+    // PIDs 0x41 to 0x60 ============================================================================================
+
+    public static final ParameterID<Void> MONITOR_STATUS_THIS_DRIVE_CYCLE = ParameterID.<Void>builder()
+            .mode(1)
+            .id(0x41)
+            .returnedBytes(4)
+            .description("Monitor status this drive cycle")
+            .decoder(bytes -> null) // TODO
+            .build();
+
+    public static final ParameterID<Void> CONTROL_MODULE_VOLTAGE = ParameterID.<Void>builder()
+            .mode(1)
+            .id(0x42)
+            .returnedBytes(2)
+            .description("Control module voltage")
+            .decoder(bytes -> null) // TODO
+            .build();
+
+    public static final ParameterID<Void> ABSOLUTE_LOAD_VALUE = ParameterID.<Void>builder()
+            .mode(1)
+            .id(0x43)
+            .returnedBytes(2)
+            .description("Absolute load value")
+            .decoder(bytes -> null) // TODO
+            .build();
+
+    public static final ParameterID<Void> COMMANDED_AIR_FUEL_EQUIVALENCE_RATIO = ParameterID.<Void>builder()
+            .mode(1)
+            .id(0x44)
+            .returnedBytes(2)
+            .description("Commanded Air-Fuel Equivalence Ratio")
+            .decoder(bytes -> null) // TODO
+            .build();
+
+    public static final ParameterID<Void> RELATIVE_THROTTLE_POSITION = ParameterID.<Void>builder()
+            .mode(1)
+            .id(0x45)
+            .returnedBytes(1)
+            .description("Relative throttle position")
+            .decoder(bytes -> null) // TODO
+            .build();
+
+    public static final ParameterID<Void> AMBIENT_AIR_TEMPERATURE = ParameterID.<Void>builder()
+            .mode(1)
+            .id(0x46)
+            .returnedBytes(1)
+            .description("Ambient air temperature")
+            .decoder(bytes -> null) // TODO
+            .build();
+
+    public static final ParameterID<Void> ABSOLUTE_THROTTLE_POSITION_B = ParameterID.<Void>builder()
+            .mode(1)
+            .id(0x47)
+            .returnedBytes(1)
+            .description("Absolute throttle position B")
+            .decoder(bytes -> null) // TODO
+            .build();
+
+    public static final ParameterID<Void> ABSOLUTE_THROTTLE_POSITION_C = ParameterID.<Void>builder()
+            .mode(1)
+            .id(0x48)
+            .returnedBytes(1)
+            .description("Absolute throttle position C")
+            .decoder(bytes -> null) // TODO
+            .build();
+
+    public static final ParameterID<Void> ACCELERATOR_PEDAL_POSITION_D = ParameterID.<Void>builder()
+            .mode(1)
+            .id(0x49)
+            .returnedBytes(1)
+            .description("Accelerator pedal position D")
+            .decoder(bytes -> null) // TODO
+            .build();
+
+    public static final ParameterID<Void> ACCELERATOR_PEDAL_POSITION_E = ParameterID.<Void>builder()
+            .mode(1)
+            .id(0x4A)
+            .returnedBytes(1)
+            .description("Accelerator pedal position E")
+            .decoder(bytes -> null) // TODO
+            .build();
+
+    public static final ParameterID<Void> ACCELERATOR_PEDAL_POSITION_F = ParameterID.<Void>builder()
+            .mode(1)
+            .id(0x4B)
+            .returnedBytes(1)
+            .description("Accelerator pedal position F")
+            .decoder(bytes -> null) // TODO
+            .build();
+
+    public static final ParameterID<Void> COMMANDED_THROTTLE_ACTUATOR = ParameterID.<Void>builder()
+            .mode(1)
+            .id(0x4C)
+            .returnedBytes(1)
+            .description("Commanded throttle actuator")
+            .decoder(bytes -> null) // TODO
+            .build();
+
+    public static final ParameterID<Void> TIME_RUN_WITH_MIL_ON = ParameterID.<Void>builder()
+            .mode(1)
+            .id(0x4D)
+            .returnedBytes(2)
+            .description("Time run with MIL on")
+            .decoder(bytes -> null) // TODO
+            .build();
+
+    public static final ParameterID<Void> TIME_SINCE_TROUBLE_CODES_CLEARED = ParameterID.<Void>builder()
+            .mode(1)
+            .id(0x4E)
+            .returnedBytes(2)
+            .description("Time since trouble codes cleared")
+            .decoder(bytes -> null) // TODO
+            .build();
+
+    public static final ParameterID<Void> MAX_VALUES_FAER_OSV_OSC_IIMAP = ParameterID.<Void>builder()
+            .mode(1)
+            .id(0x4F)
+            .returnedBytes(4)
+            .description("Maximum value for Fuel–Air equivalence ratio, oxygen sensor voltage, oxygen sensor current, and intake manifold absolute pressure")
+            .decoder(bytes -> null) // TODO
+            .build();
+
+    public static final ParameterID<Void> MAX_VALUE_EFR = ParameterID.<Void>builder()
+            .mode(1)
+            .id(0x50)
+            .returnedBytes(4)
+            .description("Maximum value for air flow rate from mass air flow sensor")
+            .decoder(bytes -> null) // TODO
+            .build();
+
+    public static final ParameterID<Void> FUEL_TYPE = ParameterID.<Void>builder()
+            .mode(1)
+            .id(0x51)
+            .returnedBytes(1)
+            .description("Fuel Type")
+            .decoder(bytes -> null) // TODO
+            .build();
+
+    public static final ParameterID<Void> ETHANOL_FUEL_PERCENTAGE = ParameterID.<Void>builder()
+            .mode(1)
+            .id(0x52)
+            .returnedBytes(1)
+            .description("Ethanol fuel %")
+            .decoder(bytes -> null) // TODO
+            .build();
+
+    public static final ParameterID<Void> ABSOLUTE_EVAP_SYSTEM_VAPOR_PRESSURE = ParameterID.<Void>builder()
+            .mode(1)
+            .id(0x53)
+            .returnedBytes(2)
+            .description("Absolute Evap system Vapor Pressure")
+            .decoder(bytes -> null) // TODO
+            .build();
+
+    public static final ParameterID<Void> EVAP_SYSTEM_VAPOR_PRESSURE_2 = ParameterID.<Void>builder()
+            .mode(1)
+            .id(0x54)
+            .returnedBytes(2)
+            .description("Evap system vapor pressure")
+            .decoder(bytes -> null) // TODO
+            .build();
+
+    public static final ParameterID<Void> SHORT_TERM_SECONDARY_OXYGEN_SENSOR_TRIM_A_BANK_1_B_BANK_3 = ParameterID.<Void>builder()
+            .mode(1)
+            .id(0x55)
+            .returnedBytes(2)
+            .description("Short term secondary oxygen sensor trim, A: bank 1, B: bank 3")
+            .decoder(bytes -> null) // TODO
+            .build();
+
+    public static final ParameterID<Void> LONG_TERM_SECONDARY_OXYGEN_SENSOR_TRIM_A_BANK_1_B_BANK_3 = ParameterID.<Void>builder()
+            .mode(1)
+            .id(0x56)
+            .returnedBytes(2)
+            .description("Long term secondary oxygen sensor trim, A: bank 1, B: bank 3")
+            .decoder(bytes -> null) // TODO
+            .build();
+
+    public static final ParameterID<Void> SHORT_TERM_SECONDARY_OXYGEN_SENSOR_TRIM_A_BANK_2_B_BANK_4 = ParameterID.<Void>builder()
+            .mode(1)
+            .id(0x57)
+            .returnedBytes(2)
+            .description("Short term secondary oxygen sensor trim, A: bank 2, B: bank 4")
+            .decoder(bytes -> null) // TODO
+            .build();
+
+    public static final ParameterID<Void> LONG_TERM_SECONDARY_OXYGEN_SENSOR_TRIM_A_BANK_2_B_BANK_4 = ParameterID.<Void>builder()
+            .mode(1)
+            .id(0x58)
+            .returnedBytes(2)
+            .description("Long term secondary oxygen sensor trim, A: bank 2, B: bank 4")
+            .decoder(bytes -> null) // TODO
+            .build();
+
+    public static final ParameterID<Void> FUEL_RAIL_ABSOLUTE_PRESSURE = ParameterID.<Void>builder()
+            .mode(1)
+            .id(0x59)
+            .returnedBytes(2)
+            .description("Fuel rail absolute pressure")
+            .decoder(bytes -> null) // TODO
+            .build();
+
+    public static final ParameterID<Void> RELATIVE_ACCELERATOR_PEDAL_POSITION = ParameterID.<Void>builder()
+            .mode(1)
+            .id(0x5A)
+            .returnedBytes(1)
+            .description("Relative accelerator pedal position")
+            .decoder(bytes -> null) // TODO
+            .build();
+
+ public static final ParameterID<Void> HYBRID_BATTERY_PACK_REMAINING_LIFE = ParameterID.<Void>builder()
+            .mode(1)
+            .id(0x5B)
+            .returnedBytes(1)
+            .description("Hybrid battery pack remaining life")
+            .decoder(bytes -> null) // TODO
+            .build();
+
+ public static final ParameterID<Void> ENGINE_OIL_TEMPERATURE = ParameterID.<Void>builder()
+            .mode(1)
+            .id(0x5C)
+            .returnedBytes(1)
+            .description("Engine oil temperature")
+            .decoder(bytes -> null) // TODO
+            .build();
+
+ public static final ParameterID<Void> FUEL_INJECTION_TIMING = ParameterID.<Void>builder()
+            .mode(1)
+            .id(0x5D)
+            .returnedBytes(2)
+            .description("Fuel injection timing")
+            .decoder(bytes -> null) // TODO
+            .build();
+
+ public static final ParameterID<Void> ENGINE_FUEL_RATE = ParameterID.<Void>builder()
+            .mode(1)
+            .id(0x5E)
+            .returnedBytes(2)
+            .description("Engine fuel rate")
+            .decoder(bytes -> null) // TODO
+            .build();
+
+ public static final ParameterID<Void> VEHICLE_EMISSION_REQUIREMENTS = ParameterID.<Void>builder()
+            .mode(1)
+            .id(0x5F)
+            .returnedBytes(1)
+            .description("Emission requirements to which vehicle is designed")
+            .decoder(bytes -> null) // TODO
+            .build();
+
 
     public static final ParameterID<SupportedPIDsReport> PIDS_SUPPORTED_OXC1_TO_0XE0 = ParameterID.<SupportedPIDsReport>builder()
             .mode(1)
@@ -700,41 +950,41 @@ public class DefaultPIDs {
             .returnedBytes(4)
             .description("PIDs supported [$41 - $60]")
             .decoder(SupportedPIDsReport.deserializer(
-                    PLACEHOLDER,
-                    PLACEHOLDER,
-                    PLACEHOLDER,
-                    PLACEHOLDER,
-                    PLACEHOLDER,
-                    PLACEHOLDER,
-                    PLACEHOLDER,
-                    PLACEHOLDER,
+                    MONITOR_STATUS_THIS_DRIVE_CYCLE,
+                    CONTROL_MODULE_VOLTAGE,
+                    ABSOLUTE_LOAD_VALUE,
+                    COMMANDED_AIR_FUEL_EQUIVALENCE_RATIO,
+                    RELATIVE_THROTTLE_POSITION,
+                    AMBIENT_AIR_TEMPERATURE,
+                    ABSOLUTE_THROTTLE_POSITION_B,
+                    ABSOLUTE_THROTTLE_POSITION_C,
 
-                    PLACEHOLDER,
-                    PLACEHOLDER,
-                    PLACEHOLDER,
-                    PLACEHOLDER,
-                    PLACEHOLDER,
-                    PLACEHOLDER,
-                    PLACEHOLDER,
-                    PLACEHOLDER,
+                    ACCELERATOR_PEDAL_POSITION_D,
+                    ACCELERATOR_PEDAL_POSITION_E,
+                    ACCELERATOR_PEDAL_POSITION_F,
+                    COMMANDED_THROTTLE_ACTUATOR,
+                    TIME_RUN_WITH_MIL_ON,
+                    TIME_SINCE_TROUBLE_CODES_CLEARED,
+                    MAX_VALUES_FAER_OSV_OSC_IIMAP,
+                    MAX_VALUE_EFR,
 
-                    PLACEHOLDER,
-                    PLACEHOLDER,
-                    PLACEHOLDER,
-                    PLACEHOLDER,
-                    PLACEHOLDER,
-                    PLACEHOLDER,
-                    PLACEHOLDER,
-                    PLACEHOLDER,
+                    FUEL_TYPE,
+                    ETHANOL_FUEL_PERCENTAGE,
+                    ABSOLUTE_EVAP_SYSTEM_VAPOR_PRESSURE,
+                    EVAP_SYSTEM_VAPOR_PRESSURE_2,
+                    SHORT_TERM_SECONDARY_OXYGEN_SENSOR_TRIM_A_BANK_1_B_BANK_3,
+                    LONG_TERM_SECONDARY_OXYGEN_SENSOR_TRIM_A_BANK_1_B_BANK_3,
+                    SHORT_TERM_SECONDARY_OXYGEN_SENSOR_TRIM_A_BANK_2_B_BANK_4,
+                    LONG_TERM_SECONDARY_OXYGEN_SENSOR_TRIM_A_BANK_2_B_BANK_4,
 
-                    PLACEHOLDER,
-                    PLACEHOLDER,
-                    PLACEHOLDER,
-                    PLACEHOLDER,
-                    PLACEHOLDER,
-                    PLACEHOLDER,
-                    PLACEHOLDER,
-                    PLACEHOLDER
+                    FUEL_RAIL_ABSOLUTE_PRESSURE,
+                    RELATIVE_ACCELERATOR_PEDAL_POSITION,
+                    HYBRID_BATTERY_PACK_REMAINING_LIFE,
+                    ENGINE_OIL_TEMPERATURE,
+                    FUEL_INJECTION_TIMING,
+                    ENGINE_FUEL_RATE,
+                    VEHICLE_EMISSION_REQUIREMENTS,
+                    PIDS_SUPPORTED_OX61_TO_0X80
             ))
             .build();
 

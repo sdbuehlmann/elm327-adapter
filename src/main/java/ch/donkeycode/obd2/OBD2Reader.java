@@ -8,6 +8,7 @@ import lombok.Builder;
 import lombok.RequiredArgsConstructor;
 import lombok.SneakyThrows;
 import lombok.Value;
+import lombok.extern.slf4j.Slf4j;
 import lombok.val;
 
 import java.time.Duration;
@@ -17,6 +18,7 @@ import java.util.Optional;
 import java.util.concurrent.TimeoutException;
 import java.util.stream.Collectors;
 
+@Slf4j
 @RequiredArgsConstructor
 public class OBD2Reader {
 
@@ -68,12 +70,16 @@ public class OBD2Reader {
                     .build();
         }
 
-        return ReadResult.<T>builder()
+        val result = ReadResult.<T>builder()
                 .pid(pid)
                 .plainCommand(command)
                 .plainResponse(responseString)
                 .response(Optional.ofNullable(response))
                 .build();
+
+        log.debug("Reading finished: {}", result);
+
+        return result;
     }
 
     @Value

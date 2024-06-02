@@ -1,6 +1,7 @@
 package ch.donkeycode.obd2.pids;
 
 import lombok.Builder;
+import lombok.ToString;
 import lombok.Value;
 
 import java.util.List;
@@ -13,5 +14,7 @@ public class ParameterID<T> {
     int id;
     int returnedBytes;
     String description;
+
+    @ToString.Exclude
     Function<List<Byte>, T> decoder;
 }
