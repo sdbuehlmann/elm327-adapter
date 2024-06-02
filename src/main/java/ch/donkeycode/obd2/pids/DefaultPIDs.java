@@ -1,6 +1,14 @@
 package ch.donkeycode.obd2.pids;
 
+import ch.donkeycode.obd2.pids.models.DegreesCelsius;
+import ch.donkeycode.obd2.pids.models.DistanceInKm;
+import ch.donkeycode.obd2.pids.models.FlowRate;
+import ch.donkeycode.obd2.pids.models.Percentage;
+import ch.donkeycode.obd2.pids.models.Presure;
+import ch.donkeycode.obd2.pids.models.RotationPerMinute;
+import ch.donkeycode.obd2.pids.models.SpeedInKmPerHour;
 import ch.donkeycode.obd2.pids.models.SupportedPIDsReport;
+import ch.donkeycode.obd2.pids.models.VehicleDiagnosticStandard;
 
 public class DefaultPIDs {
 
@@ -37,20 +45,20 @@ public class DefaultPIDs {
             .decoder(bytes -> null) // TODO
             .build();
 
-    public static final ParameterID<Void> CALCULATED_ENGINE_LOAD = ParameterID.<Void>builder()
+    public static final ParameterID<Percentage> CALCULATED_ENGINE_LOAD = ParameterID.<Percentage>builder()
             .mode(1)
             .id(0x04)
             .returnedBytes(1)
-            .description("Calculated engine load.")
-            .decoder(bytes -> null) // TODO
+            .description("Calculated engine load")
+            .decoder(Percentage.deserializer())
             .build();
 
-    public static final ParameterID<Void> ENGINE_COOLANT_TEMPERATURE = ParameterID.<Void>builder()
+    public static final ParameterID<DegreesCelsius> ENGINE_COOLANT_TEMPERATURE = ParameterID.<DegreesCelsius>builder()
             .mode(1)
             .id(0x05)
             .returnedBytes(1)
             .description("Engine coolant temperature.")
-            .decoder(bytes -> null) // TODO
+            .decoder(DegreesCelsius.deserializer())
             .build();
 
     public static final ParameterID<Void> STFT_1 = ParameterID.<Void>builder()
@@ -93,28 +101,28 @@ public class DefaultPIDs {
             .decoder(bytes -> null) // TODO
             .build();
 
-    public static final ParameterID<Void> INTAKE_MANIFOLD_ABS_PRESSURE = ParameterID.<Void>builder()
+    public static final ParameterID<Presure> INTAKE_MANIFOLD_ABS_PRESSURE = ParameterID.<Presure>builder()
             .mode(1)
             .id(0x0B)
             .returnedBytes(1)
             .description("Intake manifold absolute pressure")
-            .decoder(bytes -> null) // TODO
+            .decoder(Presure.deserializer())
             .build();
 
-    public static final ParameterID<Void> ENGINE_SPEED = ParameterID.<Void>builder()
+    public static final ParameterID<RotationPerMinute> ENGINE_SPEED = ParameterID.<RotationPerMinute>builder()
             .mode(1)
             .id(0x0C)
             .returnedBytes(2)
             .description("Engine speed")
-            .decoder(bytes -> null) // TODO
+            .decoder(RotationPerMinute.deserializer())
             .build();
 
-    public static final ParameterID<Void> VEHICLE_SPEED = ParameterID.<Void>builder()
+    public static final ParameterID<SpeedInKmPerHour> VEHICLE_SPEED = ParameterID.<SpeedInKmPerHour>builder()
             .mode(1)
             .id(0x0D)
             .returnedBytes(1)
             .description("Vehicle speed")
-            .decoder(bytes -> null) // TODO
+            .decoder(SpeedInKmPerHour.deserializer())
             .build();
 
     public static final ParameterID<Void> TIMING_ADVANCE = ParameterID.<Void>builder()
@@ -125,28 +133,28 @@ public class DefaultPIDs {
             .decoder(bytes -> null) // TODO
             .build();
 
-    public static final ParameterID<Void> INTAKE_AIR_TEMPERATURE = ParameterID.<Void>builder()
+    public static final ParameterID<DegreesCelsius> INTAKE_AIR_TEMPERATURE = ParameterID.<DegreesCelsius>builder()
             .mode(1)
             .id(0x0F)
             .returnedBytes(1)
             .description("Intake air temperature")
-            .decoder(bytes -> null) // TODO
+            .decoder(DegreesCelsius.deserializer())
             .build();
 
-    public static final ParameterID<Void> MAF_AIR_FLOW_RATE = ParameterID.<Void>builder()
+    public static final ParameterID<FlowRate> MAF_AIR_FLOW_RATE = ParameterID.<FlowRate>builder()
             .mode(1)
             .id(0x10)
             .returnedBytes(2)
             .description("Mass air flow sensor (MAF) air flow rate")
-            .decoder(bytes -> null) // TODO
+            .decoder(FlowRate.deserializer())
             .build();
 
-    public static final ParameterID<Void> THROTTLE_POSITION = ParameterID.<Void>builder()
+    public static final ParameterID<Percentage> THROTTLE_POSITION = ParameterID.<Percentage>builder()
             .mode(1)
             .id(0x11)
             .returnedBytes(1)
             .description("Throttle position")
-            .decoder(bytes -> null) // TODO
+            .decoder(Percentage.deserializer())
             .build();
 
     public static final ParameterID<Void> COMMANDED_SECONDARY_AIR_STATUS = ParameterID.<Void>builder()
@@ -231,12 +239,12 @@ public class DefaultPIDs {
             .decoder(bytes -> null) // TODO
             .build();
 
-    public static final ParameterID<Void> VEHICLE_OBD_STANDARDS = ParameterID.<Void>builder()
+    public static final ParameterID<VehicleDiagnosticStandard> VEHICLE_OBD_STANDARDS = ParameterID.<VehicleDiagnosticStandard>builder()
             .mode(1)
             .id(0x1C)
             .returnedBytes(1)
             .description("OBD standards this vehicle conforms to")
-            .decoder(bytes -> null) // TODO
+            .decoder(VehicleDiagnosticStandard.deserializer())
             .build();
 
     public static final ParameterID<Void> OXYGEN_SENSORS_PRESENT_4_BANKS = ParameterID.<Void>builder()
@@ -265,12 +273,12 @@ public class DefaultPIDs {
 
     // PIDs 0x21 to 0x40 ============================================================================================
 
-    public static final ParameterID<Void> MIL_ON_SINCE = ParameterID.<Void>builder()
+    public static final ParameterID<DistanceInKm> MIL_ON_SINCE = ParameterID.<DistanceInKm>builder()
             .mode(1)
             .id(0x21)
             .returnedBytes(2)
             .description("Distance traveled with malfunction indicator lamp (MIL) on")
-            .decoder(bytes -> null) // TODO
+            .decoder(DistanceInKm.deserializerSmall())
             .build();
 
     public static final ParameterID<Void> FUEL_RAIL_PRESSURE = ParameterID.<Void>builder()
@@ -354,12 +362,12 @@ public class DefaultPIDs {
             .decoder(bytes -> null) // TODO
             .build();
 
-    public static final ParameterID<Void> COMMANDED_EGR = ParameterID.<Void>builder()
+    public static final ParameterID<Percentage> COMMANDED_EGR = ParameterID.<Percentage>builder()
             .mode(1)
             .id(0x2C)
             .returnedBytes(1)
             .description("Commanded EGR")
-            .decoder(bytes -> null) // TODO
+            .decoder(Percentage.deserializer())
             .build();
 
     public static final ParameterID<Void> EGR_ERROR = ParameterID.<Void>builder()
@@ -370,21 +378,21 @@ public class DefaultPIDs {
             .decoder(bytes -> null) // TODO
             .build();
 
-    public static final ParameterID<Void> COMMANDED_EVAPORATIVE_PURGE = ParameterID.<Void>builder()
+    public static final ParameterID<Percentage> COMMANDED_EVAPORATIVE_PURGE = ParameterID.<Percentage>builder()
             .mode(1)
             .id(0x2E)
             .returnedBytes(1)
             .description("Commanded evaporative purge")
-            .decoder(bytes -> null) // TODO
+            .decoder(Percentage.deserializer()) // TODO
             .build();
 
 
-    public static final ParameterID<Void> FUEL_TANK_LEVEL_INPUT = ParameterID.<Void>builder()
+    public static final ParameterID<Percentage> FUEL_TANK_LEVEL_INPUT = ParameterID.<Percentage>builder()
             .mode(1)
             .id(0x2F)
             .returnedBytes(1)
             .description("Fuel Tank Level Input")
-            .decoder(bytes -> null) // TODO
+            .decoder(Percentage.deserializer())
             .build();
 
     public static final ParameterID<Void> WARM_UPS_SINCE_CODES_CLEARED = ParameterID.<Void>builder()
@@ -395,12 +403,12 @@ public class DefaultPIDs {
             .decoder(bytes -> null) // TODO
             .build();
 
-    public static final ParameterID<Void> DISTANCE_TRAVELED_SINCE_CODES_CLEARED = ParameterID.<Void>builder()
+    public static final ParameterID<DistanceInKm> DISTANCE_TRAVELED_SINCE_CODES_CLEARED = ParameterID.<DistanceInKm>builder()
             .mode(1)
             .id(0x31)
             .returnedBytes(2)
             .description("Distance traveled since codes cleared")
-            .decoder(bytes -> null) // TODO
+            .decoder(DistanceInKm.deserializerSmall())
             .build();
 
     public static final ParameterID<Void> EVAP_SYSTEM_VAPOR_PRESSURE = ParameterID.<Void>builder()
@@ -411,12 +419,12 @@ public class DefaultPIDs {
             .decoder(bytes -> null) // TODO
             .build();
 
-    public static final ParameterID<Void> ABSOLUTE_BAROMETRIC_PRESSURE = ParameterID.<Void>builder()
+    public static final ParameterID<Presure> ABSOLUTE_BAROMETRIC_PRESSURE = ParameterID.<Presure>builder()
             .mode(1)
             .id(0x33)
             .returnedBytes(2)
             .description("Absolute Barometric Pressure")
-            .decoder(bytes -> null) // TODO
+            .decoder(Presure.deserializer())
             .build();
 
     public static final ParameterID<Void> OXYGEN_SENSOR_1_CURRENT = ParameterID.<Void>builder()
@@ -549,68 +557,68 @@ public class DefaultPIDs {
             .decoder(bytes -> null) // TODO
             .build();
 
-    public static final ParameterID<Void> RELATIVE_THROTTLE_POSITION = ParameterID.<Void>builder()
+    public static final ParameterID<Percentage> RELATIVE_THROTTLE_POSITION = ParameterID.<Percentage>builder()
             .mode(1)
             .id(0x45)
             .returnedBytes(1)
             .description("Relative throttle position")
-            .decoder(bytes -> null) // TODO
+            .decoder(Percentage.deserializer())
             .build();
 
-    public static final ParameterID<Void> AMBIENT_AIR_TEMPERATURE = ParameterID.<Void>builder()
+    public static final ParameterID<DegreesCelsius> AMBIENT_AIR_TEMPERATURE = ParameterID.<DegreesCelsius>builder()
             .mode(1)
             .id(0x46)
             .returnedBytes(1)
             .description("Ambient air temperature")
-            .decoder(bytes -> null) // TODO
+            .decoder(DegreesCelsius.deserializer()) // TODO
             .build();
 
-    public static final ParameterID<Void> ABSOLUTE_THROTTLE_POSITION_B = ParameterID.<Void>builder()
+    public static final ParameterID<Percentage> ABSOLUTE_THROTTLE_POSITION_B = ParameterID.<Percentage>builder()
             .mode(1)
             .id(0x47)
             .returnedBytes(1)
             .description("Absolute throttle position B")
-            .decoder(bytes -> null) // TODO
+            .decoder(Percentage.deserializer())
             .build();
 
-    public static final ParameterID<Void> ABSOLUTE_THROTTLE_POSITION_C = ParameterID.<Void>builder()
+    public static final ParameterID<Percentage> ABSOLUTE_THROTTLE_POSITION_C = ParameterID.<Percentage>builder()
             .mode(1)
             .id(0x48)
             .returnedBytes(1)
             .description("Absolute throttle position C")
-            .decoder(bytes -> null) // TODO
+            .decoder(Percentage.deserializer())
             .build();
 
-    public static final ParameterID<Void> ACCELERATOR_PEDAL_POSITION_D = ParameterID.<Void>builder()
+    public static final ParameterID<Percentage> ACCELERATOR_PEDAL_POSITION_D = ParameterID.<Percentage>builder()
             .mode(1)
             .id(0x49)
             .returnedBytes(1)
             .description("Accelerator pedal position D")
-            .decoder(bytes -> null) // TODO
+            .decoder(Percentage.deserializer())
             .build();
 
-    public static final ParameterID<Void> ACCELERATOR_PEDAL_POSITION_E = ParameterID.<Void>builder()
+    public static final ParameterID<Percentage> ACCELERATOR_PEDAL_POSITION_E = ParameterID.<Percentage>builder()
             .mode(1)
             .id(0x4A)
             .returnedBytes(1)
             .description("Accelerator pedal position E")
-            .decoder(bytes -> null) // TODO
+            .decoder(Percentage.deserializer())
             .build();
 
-    public static final ParameterID<Void> ACCELERATOR_PEDAL_POSITION_F = ParameterID.<Void>builder()
+    public static final ParameterID<Percentage> ACCELERATOR_PEDAL_POSITION_F = ParameterID.<Percentage>builder()
             .mode(1)
             .id(0x4B)
             .returnedBytes(1)
             .description("Accelerator pedal position F")
-            .decoder(bytes -> null) // TODO
+            .decoder(Percentage.deserializer())
             .build();
 
-    public static final ParameterID<Void> COMMANDED_THROTTLE_ACTUATOR = ParameterID.<Void>builder()
+    public static final ParameterID<Percentage> COMMANDED_THROTTLE_ACTUATOR = ParameterID.<Percentage>builder()
             .mode(1)
             .id(0x4C)
             .returnedBytes(1)
             .description("Commanded throttle actuator")
-            .decoder(bytes -> null) // TODO
+            .decoder(Percentage.deserializer())
             .build();
 
     public static final ParameterID<Void> TIME_RUN_WITH_MIL_ON = ParameterID.<Void>builder()
@@ -653,12 +661,12 @@ public class DefaultPIDs {
             .decoder(bytes -> null) // TODO
             .build();
 
-    public static final ParameterID<Void> ETHANOL_FUEL_PERCENTAGE = ParameterID.<Void>builder()
+    public static final ParameterID<Percentage> ETHANOL_FUEL_PERCENTAGE = ParameterID.<Percentage>builder()
             .mode(1)
             .id(0x52)
             .returnedBytes(1)
             .description("Ethanol fuel %")
-            .decoder(bytes -> null) // TODO
+            .decoder(Percentage.deserializer())
             .build();
 
     public static final ParameterID<Void> ABSOLUTE_EVAP_SYSTEM_VAPOR_PRESSURE = ParameterID.<Void>builder()
@@ -717,28 +725,28 @@ public class DefaultPIDs {
             .decoder(bytes -> null) // TODO
             .build();
 
-    public static final ParameterID<Void> RELATIVE_ACCELERATOR_PEDAL_POSITION = ParameterID.<Void>builder()
+    public static final ParameterID<Percentage> RELATIVE_ACCELERATOR_PEDAL_POSITION = ParameterID.<Percentage>builder()
             .mode(1)
             .id(0x5A)
             .returnedBytes(1)
             .description("Relative accelerator pedal position")
-            .decoder(bytes -> null) // TODO
+            .decoder(Percentage.deserializer())
             .build();
 
- public static final ParameterID<Void> HYBRID_BATTERY_PACK_REMAINING_LIFE = ParameterID.<Void>builder()
+    public static final ParameterID<Percentage> HYBRID_BATTERY_PACK_REMAINING_LIFE = ParameterID.<Percentage>builder()
             .mode(1)
             .id(0x5B)
             .returnedBytes(1)
             .description("Hybrid battery pack remaining life")
-            .decoder(bytes -> null) // TODO
+            .decoder(Percentage.deserializer())
             .build();
 
- public static final ParameterID<Void> ENGINE_OIL_TEMPERATURE = ParameterID.<Void>builder()
+    public static final ParameterID<DegreesCelsius> ENGINE_OIL_TEMPERATURE = ParameterID.<DegreesCelsius>builder()
             .mode(1)
             .id(0x5C)
             .returnedBytes(1)
             .description("Engine oil temperature")
-            .decoder(bytes -> null) // TODO
+            .decoder(DegreesCelsius.deserializer())
             .build();
 
  public static final ParameterID<Void> FUEL_INJECTION_TIMING = ParameterID.<Void>builder()

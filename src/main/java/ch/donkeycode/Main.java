@@ -11,6 +11,7 @@ import lombok.val;
 
 import java.time.Duration;
 import java.util.List;
+import java.util.Optional;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
@@ -42,6 +43,22 @@ public class Main {
 
         log.info("Supported PIDs are:\n -{}", supported.stream()
                 .map(ParameterID::toString)
+                .collect(Collectors.joining("\n -")));
+
+        final List<OBD2Reader.ReadResult<Object>> infos = supported.stream()
+                .map(parameterID -> (OBD2Reader.ReadResult<Object>) reader.tryRead(parameterID))
+                .toList();
+
+        log.info("Successfully read and parsed:\n -{}", infos.stream()
+                .filter(readResult -> readResult.getResponse().isPresent())
+                .map(objectReadResult -> String.format("%s %s", objectReadResult.getPid(), objectReadResult.getResponse().get()))
+                .collect(Collectors.joining("\n -")));
+
+        log.info("Failed to read or parse:\n -{}", infos.stream()
+                .filter(readResult -> readResult.getResponse()
+                        .map(response -> response.negative().isPresent())
+                        .orElse(true))
+                .map(OBD2Reader.ReadResult::toString)
                 .collect(Collectors.joining("\n -")));
 
         connection.sendAndReceive("AT Z\r", Duration.ofSeconds(5)) // Reset
