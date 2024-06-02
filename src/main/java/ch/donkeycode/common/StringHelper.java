@@ -1,4 +1,4 @@
-package ch.donkeycode;
+package ch.donkeycode.common;
 
 import lombok.AccessLevel;
 import lombok.NoArgsConstructor;

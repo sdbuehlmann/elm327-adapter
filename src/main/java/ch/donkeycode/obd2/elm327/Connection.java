@@ -1,5 +1,7 @@
-package ch.donkeycode;
+package ch.donkeycode.obd2.elm327;
 
+import ch.donkeycode.common.OptionalHelper;
+import ch.donkeycode.common.StringHelper;
 import jssc.SerialPort;
 import jssc.SerialPortException;
 import lombok.extern.slf4j.Slf4j;
@@ -57,7 +59,8 @@ public class Connection {
             }
         }
 
-        return Optional.of(response.toString());
+        return Optional.of(response.toString())
+                .map(OptionalHelper.<String>peek(s -> log.info("Response: {}", StringHelper.makeControlCharsVisible(s))));
     }
 
     public void close() throws SerialPortException {
