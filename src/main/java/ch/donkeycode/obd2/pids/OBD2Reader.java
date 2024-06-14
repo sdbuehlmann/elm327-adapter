@@ -1,8 +1,8 @@
-package ch.donkeycode.obd2;
+package ch.donkeycode.obd2.pids;
 
 import ch.donkeycode.common.CastHelper;
 import ch.donkeycode.obd2.elm327.Connection;
-import ch.donkeycode.obd2.elm327.OBD2ErrorCode;
+import ch.donkeycode.obd2.pids.OBD2ErrorCode;
 import ch.donkeycode.obd2.pids.ParameterID;
 import lombok.Builder;
 import lombok.RequiredArgsConstructor;

@@ -1,4 +1,4 @@
-package ch.donkeycode.obd2.elm327;
+package ch.donkeycode.obd2.pids;
 
 public enum OBD2ErrorCode {
     GENERAL_REJECT(0x10),

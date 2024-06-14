@@ -1,43 +1,68 @@
 package ch.donkeycode;
 
 import ch.donkeycode.common.StringHelper;
-import ch.donkeycode.obd2.OBD2Reader;
+import ch.donkeycode.obd2.OBD2CanListener;
+import ch.donkeycode.obd2.elm327.Elm327CommandSender;
+import ch.donkeycode.obd2.elm327.Elm327Commands;
+import ch.donkeycode.obd2.elm327.Elm327Protocol;
+import ch.donkeycode.obd2.pids.OBD2Reader;
 import ch.donkeycode.obd2.elm327.Connection;
 import ch.donkeycode.obd2.pids.DefaultPIDs;
 import ch.donkeycode.obd2.pids.ParameterID;
 import jssc.SerialPortException;
+import lombok.SneakyThrows;
 import lombok.extern.slf4j.Slf4j;
 import lombok.val;
 
 import java.time.Duration;
 import java.util.List;
-import java.util.Optional;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 @Slf4j
 public class Main {
-    public static void main(String[] args) throws SerialPortException {
+
+    public static void main(String[] args) {
+        determineProtocol();
+    }
+
+    @SneakyThrows
+    public static void readCANMessages() {
+        val connection = new Connection("COM3");
+        val canListener = new OBD2CanListener(connection);
+
+        canListener.start();
+    }
+
+    @SneakyThrows
+    public static void determineProtocol() {
         val connection = new Connection("COM3");
         val reader = new OBD2Reader(connection);
+        val atSender = new Elm327CommandSender(connection);
 
-        connection.sendAndReceive("AT Z\r", Duration.ofSeconds(5)) // Reset
-                .ifPresent(s -> log.info("Response: {}", StringHelper.makeControlCharsVisible(s)));
+        atSender.send(Elm327Commands.RESET, null);
+        atSender.send(Elm327Commands.SET_PROTOCOL, Elm327Protocol.AUTO);
+        atSender.send(Elm327Commands.ECHO_MODE, false);
+        //atSender.send(Elm327Commands.SEPARATE_HEX_WITH_SPACE, false);
+        //atSender.send(Elm327Commands.SHOW_HEADER_INFO, false);
+        //atSender.send(Elm327Commands.APPEND_LF, false);
 
-        connection.sendAndReceive("AT SP 0\n", Duration.ofSeconds(5)) // Auto-Protokoll
-                .ifPresent(s -> log.info("Response: {}", StringHelper.makeControlCharsVisible(s)));
+        reader.read(DefaultPIDs.PIDS_SUPPORTED_OX01_TO_0X20);
 
-        connection.sendAndReceive("ATE0\n", Duration.ofSeconds(5)) // Echo ausschalten
-                .ifPresent(s -> log.info("Response: {}", StringHelper.makeControlCharsVisible(s)));
+        atSender.send(Elm327Commands.DESCRIBE_PROTOCOL, null);
+    }
 
-        connection.sendAndReceive("ATS0\n", Duration.ofSeconds(5)) // Leerzeichen ausschalten
-                .ifPresent(s -> log.info("Response: {}", StringHelper.makeControlCharsVisible(s)));
+    public static void readAvailableData() throws SerialPortException {
+        val connection = new Connection("COM3");
+        val reader = new OBD2Reader(connection);
+        val atSender = new Elm327CommandSender(connection);
 
-        connection.sendAndReceive("ATH0\n", Duration.ofSeconds(5)) // Header einschalten
-                .ifPresent(s -> log.info("Response: {}", StringHelper.makeControlCharsVisible(s)));
-
-        connection.sendAndReceive("ATL0\n", Duration.ofSeconds(5)) //  Zeilenumbrüche ausschalten
-                .ifPresent(s -> log.info("Response: {}", StringHelper.makeControlCharsVisible(s)));
+        atSender.send(Elm327Commands.RESET, null);
+        atSender.send(Elm327Commands.SET_PROTOCOL, Elm327Protocol.AUTO);
+        atSender.send(Elm327Commands.ECHO_MODE, false);
+        atSender.send(Elm327Commands.SEPARATE_HEX_WITH_SPACE, false);
+        atSender.send(Elm327Commands.SHOW_HEADER_INFO, false);
+        atSender.send(Elm327Commands.APPEND_LF, false);
 
         val supported = getAllSupported(reader);
 

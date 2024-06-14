@@ -2,6 +2,7 @@ package ch.donkeycode.obd2;
 
 import ch.donkeycode.obd2.elm327.Connection;
 import ch.donkeycode.obd2.pids.DefaultPIDs;
+import ch.donkeycode.obd2.pids.OBD2Reader;
 import ch.donkeycode.obd2.pids.ParameterID;
 import jssc.SerialPortException;
 import lombok.val;

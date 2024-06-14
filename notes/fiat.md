@@ -1,0 +1,1 @@
+Protocol: AUTO,ISO 14230-4 (KWP FAST)
