@@ -27,6 +27,8 @@ public class Elm327CommandSender {
 
         log.debug("Sended {} to ELM327 and received {}", StringHelper.makeControlCharsVisible(atCommand), StringHelper.makeControlCharsVisible(response));
 
+        Thread.sleep(200);
+
         return response;
     }
 }

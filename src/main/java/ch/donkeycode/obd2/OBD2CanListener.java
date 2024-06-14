@@ -2,7 +2,10 @@ package ch.donkeycode.obd2;
 
 import ch.donkeycode.common.StringHelper;
 import ch.donkeycode.obd2.elm327.Connection;
+import ch.donkeycode.obd2.elm327.Elm327Command;
 import ch.donkeycode.obd2.elm327.Elm327CommandSender;
+import ch.donkeycode.obd2.elm327.Elm327Commands;
+import ch.donkeycode.obd2.elm327.Elm327Protocol;
 import jssc.SerialPortException;
 import lombok.RequiredArgsConstructor;
 import lombok.SneakyThrows;
@@ -14,21 +17,25 @@ import java.time.Duration;
 @Slf4j
 public class OBD2CanListener {
     private final Connection connection;
-    private final OBD2ATCommandsSender atCommandsSender;
+    private final Elm327CommandSender elm327CommandSender;
 
     public OBD2CanListener(Connection connection) {
         this.connection = connection;
-        this.atCommandsSender = new OBD2ATCommandsSender(connection);
+        this.elm327CommandSender = new Elm327CommandSender(connection);
     }
 
     @SneakyThrows
     public void start() {
         log.info("CAN listener started");
 
-        atCommandsSender.reset();
-        atCommandsSender.setProtocolToISO15765_4_CAN();
-        atCommandsSender.enableCANPassTroughMode();
-        atCommandsSender.startReadeCANMessages();
+        elm327CommandSender.send(Elm327Commands.RESET, null);
+        elm327CommandSender.send(Elm327Commands.SET_PROTOCOL, Elm327Protocol.ISO_14230_4_KWP_FAST);
+        elm327CommandSender.send(Elm327Commands.ECHO_MODE, false);
+        //atSender.send(Elm327Commands.SEPARATE_HEX_WITH_SPACE, false);
+        //atSender.send(Elm327Commands.SHOW_HEADER_INFO, false);
+        //atSender.send(Elm327Commands.APPEND_LF, false);
+        elm327CommandSender.send(Elm327Commands.RESET_CAN_RECEIVE_FILTERS, null);
+        elm327CommandSender.send(Elm327Commands.MONITOR_ALL, null);
 
         val thread = new Thread(() -> {
             while (true) {
